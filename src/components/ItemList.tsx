@@ -13,17 +13,16 @@ interface Props {
 }
 
 const ItemList = (props: Props) => {
+  let location: String = "";
+  if (props.data?.location) {
+    location = props.data?.location.region + ", " + props.data?.location.country;
+  }
+
   return (
     <Card>
       <StyledItemList>
         <InfoItem label="IP ADDRESS" value={props.data?.ip || ""} />
-        <InfoItem
-          label="LOCATION"
-          value={
-            props.data?.location.region + ", " + props.data?.location.country ||
-            ""
-          }
-        />
+        <InfoItem label="LOCATION" value={location || ""} />
         <InfoItem
           label="TIMEZONES"
           value={props.data?.location.timezone || ""}

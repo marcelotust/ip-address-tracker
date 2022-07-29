@@ -26,6 +26,7 @@ const StyledP = styled.p`
 `;
 
 const InfoItem = (props:Props) => {
+    
     return (
     <StyledDiv>
         <StyledH2>{props.label}</StyledH2>
