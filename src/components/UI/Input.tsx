@@ -13,6 +13,10 @@ const StyledInput = styled.input`
   font-weight: 400;
   color: gray;
 
+  @media only screen and (max-width: 800px) {
+    width: 230px;
+  }
+
   &:hover {
     cursor: pointer;
   }

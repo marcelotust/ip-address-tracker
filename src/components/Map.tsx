@@ -1,10 +1,10 @@
 import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import styled from "styled-components";
-import { useState } from 'react';
 
 interface Props {
   position : String[];
+  zoom : Number;
 }
 
 const Map = (props : Props) => {
@@ -23,7 +23,7 @@ const Map = (props : Props) => {
     <StyledContainer>
       <MapContainer
         center={props.position}
-        zoom={7}
+        zoom={props.zoom}
         scrollWheelZoom={true}
         zoomControl={false}
         style={{ height: "100%", width: "100%" }}
@@ -36,6 +36,7 @@ const Map = (props : Props) => {
           position={props.position}
           draggable={false}
           animate={false}
+          //icon={<img src="/assets/images/icon-arrow.svg" style={{width:'100'}} />}
         ></Marker>
       </MapContainer>
     </StyledContainer>

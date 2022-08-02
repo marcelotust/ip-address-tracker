@@ -35,14 +35,19 @@ const StyledH1 = styled.h1`
 `;
 
 function App() {
+  const startPosition = [34, -118, 2];
   const [data, setData] = useState<IIPgeo>();
   const { dataResponse, getIPGeo } = useIPGeo();
-  const [position, setPosition] = useState([20.8054, -74.0241]);
+  const [position, setPosition] = useState(startPosition);
 
   useEffect(() => {
     if (dataResponse) {
       setData(dataResponse);
-      setPosition([dataResponse?.location?.lat, dataResponse?.location?.lng]);
+      if (dataResponse?.location?.lat) {
+        setPosition([dataResponse?.location?.lat, dataResponse?.location?.lng, 9]);
+      } else {
+        setPosition(startPosition);
+      }
     }
   }, [dataResponse]);
 
@@ -61,7 +66,7 @@ function App() {
         <Search onUpdate={onSearchHandler} />
         {dataResponse && <ItemList data={data} />}
       </StyledContainer>
-      {dataResponse && <Map position={position} />}
+      <Map position={position} zoom={position[2]} />
     </StyledApp>
   );
 }

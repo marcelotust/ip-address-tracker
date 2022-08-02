@@ -5,6 +5,10 @@ import Card from "./Layout/Card";
 
 const StyledItemList = styled.div`
   display: flex;
+
+  @media only screen and (max-width: 800px) {
+    flex-direction: column;
+  }
 `;
 
 interface Props {

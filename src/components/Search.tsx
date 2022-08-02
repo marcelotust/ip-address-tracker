@@ -13,13 +13,16 @@ const StyledForm = styled.form`
 `;
 
 const StyledError = styled.p`
-  position: absolute;
   padding: 0px;
   margin: 0px;
   margin-left: 18px;
   font-size: 14px;
   font-weight: 700;
   color: hsl(0, 100%, 80.98039215686275%);
+
+  @media only screen and (max-width: 800px) {
+    width: 300px;
+  }
 `;
 
 interface Props {
