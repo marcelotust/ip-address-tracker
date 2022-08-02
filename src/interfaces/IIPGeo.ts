@@ -4,6 +4,8 @@ export interface IIPgeo {
         country: string;
         region: string;
         timezone: string;
+        lat: number,
+        lng: number,
     };
     domains: string[];
     as: {

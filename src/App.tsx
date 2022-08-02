@@ -6,7 +6,7 @@ import { IIPgeo } from "./interfaces/IIPGeo";
 import ItemList from "./components/ItemList";
 import { useIPGeo } from "./hooks/useIPGeo";
 import Map from "./components/Map";
-import { removeHttp } from './utils/Validate';
+import { removeHttp } from "./utils/Validate";
 
 const StyledApp = styled.div`
   height: 100%;
@@ -37,29 +37,33 @@ const StyledH1 = styled.h1`
 function App() {
   const [data, setData] = useState<IIPgeo>();
   const { dataResponse, getIPGeo } = useIPGeo();
+  const [position, setPosition] = useState([20.8054, -74.0241]);
 
   useEffect(() => {
-    setData(dataResponse);
+    if (dataResponse) {
+      setData(dataResponse);
+      setPosition([dataResponse?.location?.lat, dataResponse?.location?.lng]);
+    }
   }, [dataResponse]);
 
-  const onSearchHandler = (term : String, type : String = "ip" || "url") => {
+  const onSearchHandler = (term: String, type: String = "ip" || "url") => {
     if (type == "ip") {
       getIPGeo("&ipAddress=" + term);
     } else if (type == "url") {
       getIPGeo("&domain=" + removeHttp(term));
     }
-  }
+  };
 
   return (
     <StyledApp>
       <StyledContainer>
         <StyledH1>IP Address Tracker</StyledH1>
         <Search onUpdate={onSearchHandler} />
-        {dataResponse &&<ItemList data={data} />}
+        {dataResponse && <ItemList data={data} />}
       </StyledContainer>
+      {dataResponse && <Map position={position} />}
     </StyledApp>
   );
 }
-//<Map />
 
 export default App;

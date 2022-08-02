@@ -1,60 +1,45 @@
-/*import React from "react";
-import GoogleMapReact from "google-map-react";
-import Marker from "./UI/Marker";
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import styled from "styled-components";
+import { useState } from 'react';
 
-const Map = () => {
-  const defaultProps = {
-    center: {
-      lat: 10.99835602,
-      lng: 77.01502627,
-    },
-    zoom: 11,
-  };
+interface Props {
+  position : String[];
+}
+
+const Map = (props : Props) => {
+  
+  const StyledContainer = styled.div`
+    height: calc(100vh - 205px);
+    width: 100%;
+    left: 0px;
+    top: 250px;
+    overflow: absolute;
+    position: fixed;
+    z-index: -2;
+  `;
 
   return (
-    // Important! Always set the container height explicitly
-    <div style={{ height: "100vh", width: "100%" }}>
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: "" }}
-        defaultCenter={defaultProps.center}
-        defaultZoom={defaultProps.zoom}
+    <StyledContainer>
+      <MapContainer
+        center={props.position}
+        zoom={7}
+        scrollWheelZoom={true}
+        zoomControl={false}
+        style={{ height: "100%", width: "100%" }}
       >
-        <Marker lat={59.955413} lng={30.337844} text="Marker" />
-      </GoogleMapReact>
-    </div>
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker
+          position={props.position}
+          draggable={false}
+          animate={false}
+        ></Marker>
+      </MapContainer>
+    </StyledContainer>
   );
 };
 
 export default Map;
-*/
-
-import GoogleMapReact from 'google-map-react';
-
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
-
-export default function SimpleMap(){
-  const defaultProps = {
-    center: {
-      lat: 10.99835602,
-      lng: 77.01502627
-    },
-    zoom: 11
-  };
-
-  return (
-    // Important! Always set the container height explicitly
-    <div style={{ height: '100vh', width: '100%' }}>
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: "" }}
-        defaultCenter={defaultProps.center}
-        defaultZoom={defaultProps.zoom}
-      >
-        <AnyReactComponent
-          lat={59.955413}
-          lng={30.337844}
-          text="My Marker"
-        />
-      </GoogleMapReact>
-    </div>
-  );
-}
