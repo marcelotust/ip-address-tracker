@@ -52,6 +52,8 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - [React](https://reactjs.org/) - JS library
 - [Vite](https://vitejs.dev/) - React framework
 - [Styled Components](https://styled-components.com/) - For styles
+- [React Leaflet](https://react-leaflet.js.org/) - For map
+- [IP Geolocation API](https://geo.ipify.org/) - For Geolocation API
 
 ## Author
 
