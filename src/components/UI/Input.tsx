@@ -1,4 +1,3 @@
-import React, { ForwardedRef } from "react";
 import styled from "styled-components";
 
 const StyledInput = styled.input`
@@ -26,24 +25,28 @@ const StyledInput = styled.input`
 `;
 
 interface Props {
-  name: string;
-  type: string;
-  defaultValue: string;
+  name: String;
+  type: String;
+  value: String;
+  onChange: Function;
+  onFocus: Function;
 }
 
-export type Ref = HTMLInputElement;
+//export type Ref = HTMLInputElement;
 
-const Input = React.forwardRef<Ref, Props>((props, ref) => {
+//const Input = React.forwardRef<Ref, Props>((props, ref) => {
+const Input = (props: Props) => {
   return (
-    <div>
-      <StyledInput
-        id={props.name}
-        type={props.type}
-        defaultValue={props.defaultValue}
-        ref={ref}
-      />
-    </div>
+    <StyledInput
+      id={props.name}
+      type={props.type}
+      value={props.value}
+      onChange={props.onChange}
+      onFocus={props.onFocus}
+      onBlur={props.onBlur}
+      //ref={ref}
+    />
   );
-});
+};
 
 export default Input;

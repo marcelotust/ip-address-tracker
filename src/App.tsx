@@ -6,6 +6,7 @@ import { IIPgeo } from "./interfaces/IIPGeo";
 import ItemList from "./components/ItemList";
 import { useIPGeo } from "./hooks/useIPGeo";
 import Map from "./components/Map";
+import { removeHttp } from './utils/Validate';
 
 const StyledApp = styled.div`
   height: 100%;
@@ -24,10 +25,13 @@ const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 30px;
 `;
 
 const StyledH1 = styled.h1`
   color: white;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
 `;
 
 function App() {
@@ -38,11 +42,11 @@ function App() {
     setData(dataResponse);
   }, [dataResponse]);
 
-  const onSearchHandler = (term : string, type : string = "ip" || "url") => {
+  const onSearchHandler = (term : String, type : String = "ip" || "url") => {
     if (type == "ip") {
       getIPGeo("&ipAddress=" + term);
     } else if (type == "url") {
-      getIPGeo("&domain=" + term);
+      getIPGeo("&domain=" + removeHttp(term));
     }
   }
 
@@ -56,6 +60,6 @@ function App() {
     </StyledApp>
   );
 }
-
 //<Map />
+
 export default App;
