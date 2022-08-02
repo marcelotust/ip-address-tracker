@@ -55,7 +55,7 @@ function App() {
       <StyledContainer>
         <StyledH1>IP Address Tracker</StyledH1>
         <Search onUpdate={onSearchHandler} />
-        <ItemList data={data} />
+        {dataResponse &&<ItemList data={data} />}
       </StyledContainer>
     </StyledApp>
   );
