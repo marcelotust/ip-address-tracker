@@ -8,7 +8,6 @@ interface Props {
 const StyledDiv = styled.div`
   width: 200px;
   padding: 30px;
-  //border-right: 1px solid gray;
 `;
 
 const StyledH2 = styled.h2`

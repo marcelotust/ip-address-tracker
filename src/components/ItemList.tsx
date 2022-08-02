@@ -5,7 +5,6 @@ import Card from "./Layout/Card";
 
 const StyledItemList = styled.div`
   display: flex;
-  height: 160px;
 `;
 
 interface Props {
