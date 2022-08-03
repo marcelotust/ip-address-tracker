@@ -18,7 +18,7 @@ const StyledApp = styled.div`
 
   background-image: url(${backgroundImg});
   background-repeat: no-repeat;
-  background-size: 100% 250px;
+  background-size: auto 250px;
 `;
 
 const StyledContainer = styled.div`

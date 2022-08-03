@@ -13,8 +13,8 @@ const StyledItemList = styled.div`
 
 const StyledLine = styled.div`
   border-left: 1px solid #d1d1d1;
-  height: 95px;
-  margin-top: 30px;
+  height: 85px;
+  margin-top: 35px;
 
   @media only screen and (max-width: 800px) {
     height: 0px;
