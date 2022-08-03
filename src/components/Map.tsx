@@ -36,7 +36,6 @@ const Map = (props : Props) => {
           position={props.position}
           draggable={false}
           animate={false}
-          //icon={<img src="/assets/images/icon-arrow.svg" style={{width:'100'}} />}
         ></Marker>
       </MapContainer>
     </StyledContainer>
