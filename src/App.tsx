@@ -2,7 +2,6 @@ import styled from "styled-components";
 import backgroundImg from "./assets/images/pattern-bg.png";
 import Search from "./components/Search";
 import { useEffect, useState } from "react";
-import { IIPgeo } from "./interfaces/IIPGeo";
 import ItemList from "./components/ItemList";
 import { useIPGeo } from "./hooks/useIPGeo";
 import Map from "./components/Map";
@@ -17,8 +16,12 @@ const StyledApp = styled.div`
   position: fixed;
 
   background-image: url(${backgroundImg});
-  background-repeat: no-repeat;
-  background-size: auto 250px;
+  background-repeat: repeat;
+  background-size: contain;
+
+  @media only screen and (max-width: 800px) {
+    background-size: cover;
+  }
 `;
 
 const StyledContainer = styled.div`
@@ -36,13 +39,11 @@ const StyledH1 = styled.h1`
 
 function App() {
   const startPosition = [34, -118, 2];
-  const [data, setData] = useState<IIPgeo>();
   const { dataResponse, getIPGeo } = useIPGeo();
   const [position, setPosition] = useState(startPosition);
 
   useEffect(() => {
     if (dataResponse) {
-      setData(dataResponse);
       if (dataResponse?.location?.lat) {
         setPosition([dataResponse?.location?.lat, dataResponse?.location?.lng, 9]);
       } else {
@@ -64,7 +65,7 @@ function App() {
       <StyledContainer>
         <StyledH1>IP Address Tracker</StyledH1>
         <Search onUpdate={onSearchHandler} />
-        {dataResponse && <ItemList data={data} />}
+        {dataResponse && <ItemList data={dataResponse} />}
       </StyledContainer>
       <Map position={position} zoom={position[2]} />
     </StyledApp>

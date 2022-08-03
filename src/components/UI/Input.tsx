@@ -32,13 +32,10 @@ interface Props {
   name: String;
   type: String;
   value: String;
+  placeholder: String;
   onChange: Function;
-  onFocus: Function;
 }
 
-//export type Ref = HTMLInputElement;
-
-//const Input = React.forwardRef<Ref, Props>((props, ref) => {
 const Input = (props: Props) => {
   return (
     <StyledInput
@@ -46,9 +43,7 @@ const Input = (props: Props) => {
       type={props.type}
       value={props.value}
       onChange={props.onChange}
-      onFocus={props.onFocus}
-      onBlur={props.onBlur}
-      //ref={ref}
+      placeholder={props.placeholder}
     />
   );
 };

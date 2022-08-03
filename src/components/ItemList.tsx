@@ -5,20 +5,10 @@ import Card from "./Layout/Card";
 
 const StyledItemList = styled.div`
   display: flex;
+  padding: 30px;
 
   @media only screen and (max-width: 800px) {
     flex-direction: column;
-  }
-`;
-
-const StyledLine = styled.div`
-  border-left: 1px solid #d1d1d1;
-  height: 85px;
-  margin-top: 35px;
-
-  @media only screen and (max-width: 800px) {
-    height: 0px;
-    margin-top: 0px;
   }
 `;
 
@@ -37,14 +27,11 @@ const ItemList = (props: Props) => {
     <Card>
       <StyledItemList>
         <InfoItem label="IP ADDRESS" value={props.data?.ip || ""} />
-        <StyledLine />
         <InfoItem label="LOCATION" value={location || ""} />
-        <StyledLine />
         <InfoItem
           label="TIMEZONES"
           value={props.data?.location.timezone || ""}
         />
-        <StyledLine />
         <InfoItem label="ISP" value={props.data?.isp || ""} />
       </StyledItemList>
     </Card>
